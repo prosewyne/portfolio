@@ -9,7 +9,7 @@ if(localStorage.getItem('theme') === 'theme2'){
 }
 
 // Function to fade elements
-function fadeElements(opacity, duration = 300) {
+function fadeElements(opacity) {
     sections.forEach(el => {
         el.style.opacity = opacity;
     });
