@@ -92,8 +92,8 @@ img {
     font-size: 0.75rem;
     border-radius: 50px;
     border: 2px solid #FFD700;
-    background: #8B0000;
-    color: #FFD700;
+    background: #8B0000; /* red restored */
+    color: #FFD700;      /* gold text */
     cursor: pointer;
     transition: all 0.3s ease, opacity 0.5s ease;
 }
@@ -158,9 +158,16 @@ body.theme2 {
     animation: slowZoom 30s forwards; /* zoom in 10% over 30s */
 }
 
+/* Slow zoom keyframes */
 @keyframes slowZoom {
     0% { background-size: 100% auto; }
     100% { background-size: 110% auto; }
+}
+
+/* Ensure button stays red on theme2 */
+body.theme2 #theme-toggle {
+    background: #8B0000; /* red */
+    color: #FFD700;      /* gold text */
 }
 
 /* All text inherits theme color */
