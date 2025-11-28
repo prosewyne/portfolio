@@ -54,13 +54,14 @@ header {
 
 #name {
     font-family: 'Playfair Display', serif;
-    font-size: 1.75rem; /* reduced */
-    color: inherit;
+    font-size: 1.75rem; /* minimal font */
+    background: linear-gradient(90deg, #fff, #FFD700); /* white to gold gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    border-bottom: none; /* removed underline */
-    padding-bottom: 0;
+    border-bottom: none; /* remove underline */
 }
 
 #course-year {
@@ -89,19 +90,19 @@ img {
 #theme-toggle {
     padding: 5px 15px;
     font-size: 0.75rem;
+    border-radius: 50px;
+    border: 2px solid #FFD700;
     background: #8B0000;
     color: #FFD700;
-    border: 2px solid #FFD700;
-    border-radius: 20px;
-    font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s, opacity 0.5s ease;
+    transition: all 0.3s ease, opacity 0.5s ease;
 }
 
 #theme-toggle:hover {
     background: #FFD700;
     color: #8B0000;
-    transform: scale(1.05);
+    transform: scale(1.1) rotate(-2deg);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
 }
 
 /* Sections */
@@ -123,14 +124,16 @@ section:hover {
 
 h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 1rem; /* reduced */
+    font-size: 1rem; /* minimal font */
     margin-bottom: 10px;
-    color: inherit;
+    background: linear-gradient(90deg, #fff, #FFD700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 p, li {
-    font-size: 0.875rem; /* smaller text */
-    color: inherit;
+    font-size: 0.875rem; /* smaller font */
+    color: #FFD700;
 }
 
 /* Fadeable elements */
@@ -138,19 +141,26 @@ header, section, #profile-img, #theme-toggle {
     transition: opacity 0.5s ease;
 }
 
-/* Themes */
+/* Theme 1: light leopard */
 body.theme1 {
-    background-image: url('leopard1.jpg'); /* light leopard */
+    background-image: url('leopard1.jpg');
     background-size: cover;
     background-position: center;
-    color: #111; /* dark text for light theme */
+    color: #FFD700;
 }
 
+/* Theme 2: dark leopard with slow 10% zoom */
 body.theme2 {
-    background-image: url('leopard2.png'); /* dark leopard */
-    background-size: cover;
+    background-image: url('leopard2.jpg');
+    background-size: 100% auto; /* start normal */
     background-position: center;
-    color: #fff; /* light text for dark theme */
+    color: #FFD700;
+    animation: slowZoom 30s forwards; /* zoom in 10% over 30s */
+}
+
+@keyframes slowZoom {
+    0% { background-size: 100% auto; }
+    100% { background-size: 110% auto; }
 }
 
 /* All text inherits theme color */
