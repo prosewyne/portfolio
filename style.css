@@ -1,76 +1,126 @@
-/* Reset default margin and padding */
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Fonts */
 body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center; /* horizontal center */
-    align-items: center;     /* vertical center */
-    flex-direction: column;  /* stack elements vertically */
-    text-align: center;      /* center text inside */
-    min-height: 100vh;       /* full viewport height */
+    font-family: 'Montserrat', sans-serif;
     position: relative;
-
-    /* Background image */
-    background-image: url('background.jpg'); /* replace with your image path */
-    background-size: cover;       /* cover entire screen */
-    background-position: center;  /* center the image */
-    background-repeat: no-repeat; /* prevent tiling */
-}
-
-/* Overlay to make text readable */
-body::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* black overlay with 50% opacity */
-    z-index: -1; /* behind the content */
-}
-
-header {
-    margin-bottom: 20px;
-    color: #fff; /* text color */
-}
-
-#profile-img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%; /* circular image */
-    margin: 10px 0;
-    border: 3px solid #fff; /* optional border for better visibility */
-}
-
-section {
-    margin: 20px 0;
-    color: #fff; /* text color */
-}
-
-ul {
-    list-style: none; /* remove default bullets */
-    padding-left: 0;
-}
-
-li {
-    margin: 5px 0;
-}
-
-button {
-    padding: 10px 20px;
-    cursor: pointer;
-    border: none;
-    background-color: #ff6b6b;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    background-image: url('YOUR_BACKGROUND_IMAGE_HERE'); /* <-- Replace with background image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: #fff;
-    border-radius: 5px;
+}
+
+/* Overlay for readability */
+.overlay {
+    position: absolute;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    background: rgba(255, 182, 193, 0.4); /* soft pink overlay */
+    z-index: -1;
+}
+
+/* Header */
+header {
+    margin-bottom: 30px;
+}
+
+#name {
+    font-family: 'Pacifico', cursive; /* cute gyaru style */
+    font-size: 3rem;
+    color: #ffb6c1; /* pastel pink */
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+#course-year {
+    font-weight: 600;
+    color: #add8e6; /* pastel blue */
+}
+
+/* Profile image */
+#profile-img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    margin: 15px 0;
+}
+
+/* Buttons */
+button {
+    background: linear-gradient(135deg, #ffb6c1, #add8e6);
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 20px;
     font-weight: bold;
-    transition: background-color 0.3s;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s;
 }
 
 button:hover {
-    background-color: #ff3b3b;
+    transform: scale(1.05);
+}
+
+/* Sections */
+section {
+    margin: 25px 0;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px 30px;
+    border-radius: 20px;
+    width: 80%;
+    max-width: 700px;
+    backdrop-filter: blur(10px);
+}
+
+h2 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #ffb6c1;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    margin: 8px 0;
+    font-weight: 500;
+}
+
+/* Sparkles */
+.sparkles {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    pointer-events: none;
+}
+
+.sparkle {
+    font-size: 2rem;
+    color: #fff;
+    animation: sparkle 2s infinite;
+}
+
+.sparkle:nth-child(2) { animation-delay: 0.5s; }
+.sparkle:nth-child(3) { animation-delay: 1s; }
+.sparkle:nth-child(4) { animation-delay: 1.5s; }
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1.2); }
 }
