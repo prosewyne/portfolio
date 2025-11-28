@@ -15,11 +15,11 @@ body {
     text-align: center;
     padding: 30px;
     min-height: 100vh;
-    transition: background 1s ease-in-out, color 0.5s;
+    transition: background 1s ease-in-out, color 0.5s ease-in-out;
     overflow-x: hidden;
 }
 
-/* Floating sparkles */
+/* Sparkles */
 .sparkles-container {
     position: absolute;
     width: 100%;
@@ -33,23 +33,24 @@ body {
     color: #FFD700;
     font-size: 1.5rem;
     opacity: 0;
-    animation: sparkleAnim 5s infinite;
+    animation: sparkleFloat 5s infinite;
 }
 
-.sparkle:nth-child(1) { left: 10%; animation-delay: 0s;}
-.sparkle:nth-child(2) { left: 30%; animation-delay: 1s;}
-.sparkle:nth-child(3) { left: 50%; animation-delay: 2s;}
-.sparkle:nth-child(4) { left: 70%; animation-delay: 3s;}
-.sparkle:nth-child(5) { left: 90%; animation-delay: 4s;}
+.sparkle:nth-child(1) { left: 5%; animation-delay: 0s; }
+.sparkle:nth-child(2) { left: 20%; animation-delay: 1s; }
+.sparkle:nth-child(3) { left: 40%; animation-delay: 2s; }
+.sparkle:nth-child(4) { left: 60%; animation-delay: 3s; }
+.sparkle:nth-child(5) { left: 80%; animation-delay: 4s; }
 
-@keyframes sparkleAnim {
+@keyframes sparkleFloat {
     0%, 100% { transform: translateY(0) scale(0); opacity: 0; }
-    50% { transform: translateY(-100px) scale(1.2); opacity: 1; }
+    50% { transform: translateY(-120px) scale(1.2); opacity: 1; }
 }
 
 /* Header */
 header {
     margin-bottom: 30px;
+    transition: opacity 0.5s ease;
 }
 
 #name {
@@ -76,10 +77,11 @@ header {
     border: 4px solid #FFD700;
     margin: 15px 0;
     box-shadow: 0 0 20px rgba(255,215,0,0.8);
+    transition: opacity 0.5s ease;
 }
 
 /* Buttons */
-button {
+#theme-toggle {
     background: #8B0000;
     color: #FFD700;
     border: 2px solid #FFD700;
@@ -87,10 +89,10 @@ button {
     border-radius: 20px;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.3s, opacity 0.5s ease;
 }
 
-button:hover {
+#theme-toggle:hover {
     background: #FFD700;
     color: #8B0000;
     transform: scale(1.05);
@@ -105,7 +107,7 @@ section {
     max-width: 700px;
     background: rgba(0,0,0,0.6);
     backdrop-filter: blur(8px);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s, opacity 0.5s ease;
 }
 
 section:hover {
@@ -129,15 +131,20 @@ li {
     font-weight: 500;
 }
 
+/* Fadeable elements for cinematic theme switch */
+header, section, #profile-img, #theme-toggle {
+    transition: opacity 0.5s ease;
+}
+
 /* THEME STYLES */
 body.theme1 {
-    background-image: url('leopard1.jpg'); /* first leopard background */
+    background-image: url('leopard1.jpg'); /* replace with your first leopard image */
     background-size: cover;
     background-position: center;
 }
 
 body.theme2 {
-    background-image: url('leopard2.jpg'); /* second leopard background */
+    background-image: url('leopard2.jpg'); /* replace with your second leopard image */
     background-size: cover;
     background-position: center;
 }
