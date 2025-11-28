@@ -1,44 +1,44 @@
 const toggleButton = document.getElementById('theme-toggle');
 const body = document.body;
-const elements = document.querySelectorAll('header, #profile-img, button');
-const icon = document.getElementById('toggle-icon');
+const sections = document.querySelectorAll('header, section, #profile-img, #theme-toggle');
+const sparkles = document.querySelectorAll('.sparkle');
 
-// Load saved theme
-if (localStorage.getItem('theme') === 'dark') {
-    body.classList.add('dark');
-    if(icon) {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-    }
+// Load saved theme from localStorage
+if(localStorage.getItem('theme') === 'theme2'){
+    body.classList.remove('theme1');
+    body.classList.add('theme2');
 }
 
-// Toggle theme on click
+// Function to fade elements
+function fadeElements(opacity, duration = 300) {
+    sections.forEach(el => {
+        el.style.transition = `opacity ${duration}ms ease`;
+        el.style.opacity = opacity;
+    });
+}
+
+// Toggle between themes with cinematic fade
 toggleButton.addEventListener('click', () => {
-    // Fade out elements
-    elements.forEach(el => el.style.opacity = 0);
-
+    fadeElements(0, 300); // fade out content
+    
     setTimeout(() => {
-        // Toggle dark class
-        body.classList.toggle('dark');
-
-        // Update icon if present
-        if(icon) {
-            icon.classList.toggle('fa-sun');
-            icon.classList.toggle('fa-moon');
-            icon.style.transform = 'rotate(180deg)';
-            setTimeout(() => icon.style.transform = 'rotate(0deg)', 300);
+        // Swap themes
+        if(body.classList.contains('theme1')){
+            body.classList.remove('theme1');
+            body.classList.add('theme2');
+            localStorage.setItem('theme', 'theme2');
+        } else {
+            body.classList.remove('theme2');
+            body.classList.add('theme1');
+            localStorage.setItem('theme', 'theme1');
         }
 
-        // Fade elements back in
-        elements.forEach(el => el.style.opacity = 1);
+        // Fade content back in
+        fadeElements(1, 500);
 
         // Button pop animation
         toggleButton.style.transform = 'scale(1.2)';
-        setTimeout(() => toggleButton.style.transform = 'scale(1)', 150);
+        setTimeout(() => toggleButton.style.transform = 'scale(1)', 200);
 
-        // Save theme
-        localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
-    }, 150);
+    }, 350); // wait for fade-out
 });
-
-//edited
